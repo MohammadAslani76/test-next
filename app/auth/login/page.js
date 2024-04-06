@@ -4,6 +4,8 @@ import {useSearchParams, useRouter, redirect} from "next/navigation";
 import {useEffect, useRef} from "react";
 import {signIn, useSession} from "next-auth/react";
 import LoadingPage from "@/app/components/LoadingPage";
+import {toast} from "react-toastify";
+import Link from "next/link";
 
 const Login = () => {
 
@@ -32,12 +34,14 @@ const Login = () => {
                 callbackUrl
             })
             if (result.ok){
+                toast.success("با موفقیت وارد شدید")
                 router.push(callbackUrl)
             } else {
-                console.log("نام کاربری یا کلمه عبور اشتباه است")
+                toast.error("نام کاربری یا کلمه عبور اشتباه است")
             }
         } catch (err) {
             console.log(err.message)
+            toast.error("ارتباط با سرور برقرار نشد")
         }
     }
 
@@ -67,6 +71,9 @@ const Login = () => {
                 <button type="submit" className="px-3 py-2 w-full bg-indigo-500 text-white rounded-lg transition-all hover:bg-indigo-400">
                     ورود
                 </button>
+                <Link href="/auth/register" className="text-sm text-indigo-300">
+                    ایجاد حساب کاربری
+                </Link>
             </form>
         </div>
     );

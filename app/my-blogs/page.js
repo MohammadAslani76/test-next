@@ -1,11 +1,11 @@
 "use client"
 
+import Navbar from "@/app/components/Navbar";
 import {useSession} from "next-auth/react";
 import {redirect} from "next/navigation";
-import Navbar from "@/app/components/Navbar";
 import LoadingPage from "@/app/components/LoadingPage";
 
-export default function Home() {
+const MyBlogs = () => {
 
     const {data:session,status} = useSession({
         required : true,
@@ -24,8 +24,10 @@ export default function Home() {
         <>
             <Navbar/>
             <main className="p-2 bg-gray-800 text-white h-[calc(100vh-60px)]">
-                صفحه اصلی
+                بلاگ های من
             </main>
         </>
     );
-}
+};
+
+export default MyBlogs;
