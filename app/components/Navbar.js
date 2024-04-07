@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <nav className="p-4 shadow-xl shadow-gray-100 flex items-center justify-between gap-4 bg-gray-700 text-white">
             <Link href="/" className="text-lg text-indigo-300">
-                سایت تاپلرن
+                سایت بلاگ
             </Link>
             <div className="flex items-center justify-center gap-4">
                 <Link href="/" className={`text-sm md:text-base transition-all ${currentPath === "/" ? "text-green-300 hover:text-green-500" : "hover:text-gray-300"}`}>

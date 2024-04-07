@@ -1,5 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials"
 import axios from "axios";
+import {backendUrl, backendUrlHeader} from "@/utils/utils";
 
 export const options = {
     providers : [
@@ -18,11 +19,8 @@ export const options = {
                 }
             },
             async authorize(credentials){
-                const {data} = await axios.post("http://localhost:2024/users/login",credentials,{
-                    headers : {
-                        Accept: "application/json",
-                        "Content-Type": "application/json"
-                    }
+                const {data} = await axios.post(`${backendUrl}/users/login`,credentials,{
+                    headers : backendUrlHeader()
                 })
 
                 if (data.result && data.user){

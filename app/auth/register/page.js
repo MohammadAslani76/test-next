@@ -7,6 +7,7 @@ import {redirect,useRouter} from "next/navigation";
 import LoadingPage from "@/app/components/LoadingPage";
 import {toast} from "react-toastify";
 import axios from "axios";
+import {backendUrl, backendUrlHeader} from "@/utils/utils";
 
 
 const Register = () => {
@@ -37,11 +38,8 @@ const Register = () => {
             if (password.current !== confirmPassword.current){
                 return toast.error("کلمه عبور با تکرار کلمه عبور یکسان نمی باشد")
             }
-            const {data} = await axios.post("http://localhost:2024/users/register",submitData,{
-                headers : {
-                    Accept: "application/json",
-                    "Content-Type": "application/json"
-                }
+            const {data} = await axios.post(`${backendUrl}/users/register`,submitData,{
+                headers : backendUrlHeader()
             })
             if (data.result){
                 router.push("/api/auth/signin")

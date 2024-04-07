@@ -12,8 +12,8 @@ const vazir = localFont({
 })
 
 export const metadata = {
-    title: "سایت تستی نکست",
-    description: "اولین سایت تستی فارسی با نکست",
+    title: "سایت بلاگ",
+    description: "این سایت اولین سایت بلاگ فارسی است",
 };
 
 export default function RootLayout({children}) {

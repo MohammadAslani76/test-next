@@ -1,6 +1,6 @@
 "use client"
 
-import {useSearchParams, useRouter, redirect} from "next/navigation";
+import { useRouter, redirect} from "next/navigation";
 import {useEffect, useRef} from "react";
 import {signIn, useSession} from "next-auth/react";
 import LoadingPage from "@/app/components/LoadingPage";
@@ -13,14 +13,13 @@ const Login = () => {
     const email = useRef("")
     const password = useRef("")
 
-    const searchParams = useSearchParams()
-    const callbackUrl = searchParams.get("callbackUrl") || "/"
+    const callbackUrl = "/"
 
     const {status} = useSession()
 
     useEffect(() => {
         if (status === "authenticated") {
-            return redirect("/")
+            return redirect(callbackUrl)
         }
     },[status])
 
